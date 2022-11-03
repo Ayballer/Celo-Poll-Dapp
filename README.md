@@ -9,7 +9,7 @@ This is a very simple Polling dapp where users
 Users can only vote once in each poll.
 
 # Live Demo
-[Celo poll link](https://www.google.com)
+[Celo poll link](https://ayballer.github.io/Celo-Poll-Dapp/)
 
 #Requiremnet
 
