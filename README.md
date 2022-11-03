@@ -11,14 +11,14 @@ Users can only vote once in each poll.
 # Live Demo
 [Celo poll link](https://ayballer.github.io/Celo-Poll-Dapp/)
 
-#Requiremnet
+# Requiremnet
 
 * Install the CeloExtensionWallet from the Google Chrome Store.
 * Create a wallet.
 * Go to https://celo.org/developers/faucet and get tokens for the alfajores testnet.
 * Switch to the alfajores testnet in the CeloExtensionWallet.
 
-##Project Setup
+## Project Setup
 
 # Install
 
