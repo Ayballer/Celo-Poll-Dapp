@@ -107,13 +107,13 @@ function productTemplate(_product) {
         </p>
 
         <div class="d-flex justify-content-around gap-2 mb-2">
-        <a class="btn btn-lg btn-outline-dark badBtn fs-6 p-3" id=${_product.index} >
+        <a class="btn btn-lg btn-outline-dark NoBtn fs-6 p-3" id=${_product.index} >
         No <br> <span class="text-primary display-6">  ${_product.No} </span> </a>
 
-        <a class="btn btn-lg btn-outline-dark averageBtn fs-6 p-3" id=${_product.index}>
+        <a class="btn btn-lg btn-outline-dark UndecidedBtn fs-6 p-3" id=${_product.index}>
         Undecided <br> <span class="text-primary display-6">  ${_product.Undecided} </span></a>
 
-        <a class="btn btn-lg btn-outline-dark goodBtn fs-6 p-3" id=${_product.index}>
+        <a class="btn btn-lg btn-outline-dark YesBtn fs-6 p-3" id=${_product.index}>
         Yes <br> <span class="text-primary display-6">  ${_product.Yes} </span> </a>
       </div>
 
@@ -165,7 +165,7 @@ window.addEventListener("load", async () => {
   notificationOff();
 });
 
-/********************Gret Vote Result************************** */
+/********************Get Vote Result************************** */
 document.querySelector("#marketplace").addEventListener("click", async (e) => {
   if (e.target.className.includes("voteResultBtn")) {
     const index = e.target.id;
@@ -212,9 +212,9 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
 //   renderProducts();
 // });
 
-/***********************Bad BTN**************** */
+/***********************NO BTN**************** */
 document.querySelector("#marketplace").addEventListener("click", async (e) => {
-  if (e.target.className.includes("badBtn")) {
+  if (e.target.className.includes("NoBtn")) {
     const index = e.target.id;
     const value = e.target.value;
     notification(`⌛ ${kit.defaultAccount} voting for No...`)
@@ -223,7 +223,7 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
       .Vote(index, 0)
       .send({ from: kit.defaultAccount })
     } catch (error) {
-      notification(`⚠️ ${error} Error in Voting...`);
+      notification(`⚠️ ${error} Already Voted...`);
       return;
     }
     notification(`🎉 You've Voted successfully.`)
@@ -231,18 +231,18 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
   }
 });
 
-/*************************Average BTN****************** */
+/*************************Undecided BTN****************** */
 document.querySelector("#marketplace").addEventListener("click", async (e) => {
-  if (e.target.className.includes("averageBtn")) {
+  if (e.target.className.includes("UndecidedBtn")) {
     const index = e.target.id;
     const value = e.target.value;
-    notification(`⌛ ${kit.defaultAccount} voting for Undecided...`)
+    notification(`⌛ ${kit.defaultAccount} voting for Average...`)
     try {
       const result = await contract.methods
       .Vote(index, 1)
       .send({ from: kit.defaultAccount })
     } catch (error) {
-      notification(`⚠️ ${error} Error in Voting...`);
+      notification(`⚠️ ${error} Already Voted...`);
       return;
     }
     notification(`🎉 You've Voted successfully.`)
@@ -253,7 +253,7 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
 
 /********************Good btn*********************** */
 document.querySelector("#marketplace").addEventListener("click", async (e) => {
-  if (e.target.className.includes("goodBtn")) {
+  if (e.target.className.includes("YesBtn")) {
     const index = e.target.id;
     const value = e.target.value;
     console.log(value)
@@ -263,7 +263,7 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
       .Vote(index, 2)
       .send({ from: kit.defaultAccount })
     } catch (error) {
-      notification(`⚠️ ${error} Error in Voting...`);
+      notification(`⚠️ ${error} Already Voted...`);
       return;
     }
     notification(`🎉 You've Voted successfully.`)
