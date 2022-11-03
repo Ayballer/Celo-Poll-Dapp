@@ -1,9 +1,9 @@
 import Web3 from "web3";
 import { newKitFromWeb3 } from "@celo/contractkit";
-import votingAbi from "../contract/voting.abi.json";
+import pollingABI from "../contract/poll.abi.json";
 
 const ERC20_DECIMALS = 18;
-const votingAddress = "0x77B4841F55a382b8d14F53bCFe0eF1fe9420BAb3";
+const pollingAddress = "0x77B4841F55a382b8d14F53bCFe0eF1fe9420BAb3";
 
 
 let kit;
@@ -23,7 +23,7 @@ const connectCeloWallet = async function () {
       const accounts = await kit.web3.eth.getAccounts();
       kit.defaultAccount = accounts[0];
 
-      contract = new kit.web3.eth.Contract(votingAbi, votingAddress);
+      contract = new kit.web3.eth.Contract(pollingABI, pollingAddress);
     } catch (error) {
       notification(`⚠️ ${error}.`);
     }
@@ -32,14 +32,6 @@ const connectCeloWallet = async function () {
   }
 };
 
-// async function approve(_price) {
-//   const cUSDContract = new kit.web3.eth.Contract(erc20Abi, cUSDContractAddress)
-
-//   const result = await cUSDContract.methods
-//     .approve(votingAddress, _price)
-//     .send({ from: kit.defaultAccount })
-//   return result
-// }
 
 const getBalance = async function () {
   const totalBalance = await kit.getTotalBalance(kit.defaultAccount);
@@ -169,12 +161,11 @@ window.addEventListener("load", async () => {
   notification("⌛ Loading...");
   await connectCeloWallet();
   await getBalance();
-  // await getProducts()
   await Idlength();
   notificationOff();
 });
 
-
+/********************Gret Vote Result************************** */
 document.querySelector("#marketplace").addEventListener("click", async (e) => {
   if (e.target.className.includes("voteResultBtn")) {
     const index = e.target.id;
@@ -305,7 +296,6 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
     }) 
 
     /**********************Get Time Left****************** */
-    //   document.querySelector("#marketplace").addEventListener("click", async (e) => 
     document.querySelector("#marketplace").addEventListener("click", async (e) => {
       if (e.target.className.includes("countdownBtn")) {
         const index = e.target.id;
@@ -335,10 +325,3 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
         notification(`🎉 Time fetched succesully successfully.`)        
       }
     });
-
-//https://source.unsplash.com/uK_duTfkNJE/640x960
-//https://source.unsplash.com/mkTqZN1NzhY/640x960
-//https://source.unsplash.com/L4YGuSg0fxs/640x960
-//0x9c3b5D772eF1D722fd5100E700019Baa85cb0dab initial deploy
-// 2- 0x1e945668eF184502Bda9b1AF23fB5AF6304c291f
-//new 0xdF804684BEDBd5C4bEc5f80c90Db381DA3dB9772
