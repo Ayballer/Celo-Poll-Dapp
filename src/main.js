@@ -236,7 +236,7 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
   if (e.target.className.includes("UndecidedBtn")) {
     const index = e.target.id;
     const value = e.target.value;
-    notification(`⌛ ${kit.defaultAccount} voting for Average...`)
+    notification(`⌛ ${kit.defaultAccount} voting for Undecided...`)
     try {
       const result = await contract.methods
       .Vote(index, 1)
